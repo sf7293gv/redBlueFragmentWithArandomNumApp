@@ -18,6 +18,9 @@ import kotlin.random.Random
  * Use the [RedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+const val RANDOM_NUMBER_GENERATED = "com.example.redbluefragments_randomnumber.RedFragment.RandomNumber"
+
 class RedFragment : Fragment() {
 
     private lateinit var sendRandomNumberButton: Button
@@ -43,6 +46,7 @@ class RedFragment : Fragment() {
     private fun sendRandomNumber() {
         val random = Random.nextInt(100) // 0-99
         randomNumberViewModel.randomNumber = random
+        parentFragmentManager.setFragmentResult(RANDOM_NUMBER_GENERATED, Bundle.EMPTY)
     }
 
     companion object {
